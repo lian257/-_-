@@ -62,7 +62,7 @@ export default {
 
     return {
       code: "",  // 组件传递
-       user: {
+      user: {
         code: "",  // 表单
         username: '',
         password: ''
@@ -99,9 +99,9 @@ export default {
           this.$request.post('/login',this.user).then(res => {
             console.log(res)
             if(res.code === '200'){
-                  this.$router.push('/')
-                  this.$message.success("登录成功")
-                  localStorage.setItem("honey-user",JSON.stringify(res.data))  //save user
+              this.$router.push('/')
+              this.$message.success("登录成功")
+              localStorage.setItem("honey-user",JSON.stringify(res.data))  //save user
             }else{
               this.$message.error(res.msg)
             }

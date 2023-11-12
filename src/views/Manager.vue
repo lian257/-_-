@@ -104,7 +104,7 @@
                           :show-file-list="false"
                           :on-success="(row,file,fileList) => handleTableFileUpload(scope.row,file,fileList)"
                       >
-                      <el-button size="mini" type="primary">点击上传</el-button>
+                        <el-button size="mini" type="primary">点击上传</el-button>
                       </el-upload>
                     </template>
                   </el-table-column>
@@ -158,7 +158,7 @@ export default {
   },
   mounted() {
     /**
-    页面加载后刷新
+     页面加载后刷新
      axios.get('http://localhost:8080/user/selectAll').then(res =>{
        console.log(res)
        this.users = res.data.data
@@ -173,14 +173,14 @@ export default {
       console.log(row,file,fileList)
       row.avatar = file.response.data
       console.log(row)
-       //this.$set(row,'avatar',file.response.data)
-      // request().put('user/upload',row).then(res =>{
-      //   if(res.code === '200'){
-      //     this.$message.success('上传成功')
-      //   }else{
-      //     this.$message.error(res.msg)
-      //   }
-      // })
+
+       request.put('/user/update',row).then(res =>{
+         if(res.code === '200'){
+           this.$message.success('上传成功')
+         }else{
+           this.$message.error(res.msg)
+         }
+       })
     },
     handleFull() {
       document.documentElement.requestFullscreen()
@@ -194,9 +194,9 @@ export default {
       localStorage.removeItem('honey-user')
       this.$router.push('/login')
     },
-    handleFileUpload(response,file,fileList){
-      this.fileList = fileList
-    }
+    handleFileUpload(response, file, fileList) {
+      console.log(response, file, fileList)
+    },
   }
 }
 </script>
