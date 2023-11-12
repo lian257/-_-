@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import MyComponent from 'src/responsive-book-website-main/BookView.html'
 
 Vue.use(VueRouter)
 

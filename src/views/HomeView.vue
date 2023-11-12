@@ -102,13 +102,13 @@
                           action="http://localhost:9090/file/upload"
                           :headers="{token:user.token}"
                           :show-file-list="false"
-                          :on-success="(row,file,fileList) =>
-                          handleTableFileUpload(scope.row,file,fileList)"
+                          :on-success="(row,file,fileList) => handleTableFileUpload(scope.row,file,fileList)"
                       >
                       <el-button size="mini" type="primary">点击上传</el-button>
                       </el-upload>
                     </template>
                   </el-table-column>
+
                   <el-table-column label="文件预览">
                     <template v-slot="scope">
                       <el-image v-if ="scope.row.avatar" :src="scope.row.avatar"
@@ -170,9 +170,17 @@ export default {
   },
   methods: {
     handleTableFileUpload(row,file,fileList){
-          console.log(row,file,fileList)
+      console.log(row,file,fileList)
       row.avatar = file.response.data
-      // this.$set(row,'avatar',file.response.data)
+      console.log(row)
+       //this.$set(row,'avatar',file.response.data)
+      // request().put('user/upload',row).then(res =>{
+      //   if(res.code === '200'){
+      //     this.$message.success('上传成功')
+      //   }else{
+      //     this.$message.error(res.msg)
+      //   }
+      // })
     },
     handleFull() {
       document.documentElement.requestFullscreen()
